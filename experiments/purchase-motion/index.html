@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#46297b">
+  <title>تدارکا | نمونه تعاملی خرید</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="demo.css"><script src="demo.js" defer></script>
+</head>
+<body>
+  <header class="demo-header">
+    <a href="../../index.html" aria-label="صفحه اصلی تدارکا"><img src="../../assets/logo.svg" alt="تدارکا" width="115" height="35"></a>
+    <span class="demo-badge">نمونه آزمایشی <span>۰۳</span></span>
+    <a class="back-link" href="../../index.html#buying">برگشت به سایت</a>
+  </header>
+  <main>
+    <section class="purchase-demo" aria-labelledby="demo-title" data-step="1">
+      <div class="demo-layout">
+        <div class="story">
+          <span class="eyebrow"><span class="tiny-square" aria-hidden="true"></span>خرید با قیمت مشخص</span>
+          <h1 id="demo-title">نیازتان را بچینید،<br><span class="headline-mark">مبلغ را روشن ببینید.</span></h1>
+          <p class="lead">از انتخاب کالا تا مبلغ نهایی؛ همه‌چیز پیش از ثبت سفارش مشخص است.</p>
+          <div class="motion-film" data-scene="1" role="img" aria-label="موشن‌گرافی: نیاز مجموعه به بسته‌های کالا تبدیل می‌شود و مبلغ نهایی با هزینه ارسال مشخص می‌شود.">
+            <div class="film-orbit" aria-hidden="true"></div>
+            <div class="film-scene needs-scene" aria-hidden="true">
+              <div class="need-sheet"><div class="sheet-head"><span>نیاز مجموعه شما</span><span class="sheet-mark"></span></div><div class="need-row"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg><strong class="film-product-name">خودکار آبی</strong></div><div class="need-row secondary-row"><span class="list-dot"></span><span class="film-pack">۱۲ خودکار در هر بسته</span></div><div class="need-row secondary-row"><span class="list-dot"></span><span class="film-quantity">۳ بسته</span></div><div class="sheet-footer">برای کار هر روز</div></div>
+              <img class="needs-art film-art" src="assets/pens.svg" alt="" width="240" height="160">
+              <span class="film-sticker needs-sticker">از همین نیاز شروع می‌کنیم.</span>
+            </div>
+            <div class="film-scene packs-scene" aria-hidden="true">
+              <div class="pack-tile tile-back"><img class="film-art" src="assets/pens.svg" alt="" width="240" height="160"></div>
+              <div class="pack-tile tile-middle"><img class="film-art" src="assets/pens.svg" alt="" width="240" height="160"></div>
+              <div class="pack-tile tile-front"><img class="film-art" src="assets/pens.svg" alt="" width="240" height="160"><span class="film-quantity">۳ بسته</span></div>
+              <span class="film-sticker packs-sticker"><b class="film-units">۳۶ خودکار</b><span>برای مجموعه شما</span></span>
+            </div>
+            <div class="film-scene amount-scene" aria-hidden="true">
+              <div class="amount-ticket"><span class="ticket-label">یک جمع روشن</span><div class="film-equation"><span class="film-subtotal">۵۵۵٬۰۰۰</span><span class="equation-plus">+</span><span>۶۰٬۰۰۰</span></div><div class="equation-labels"><span>کالاها</span><span>ارسال</span></div><div class="ticket-rule"></div><div class="ticket-total"><strong class="film-total">۶۱۵٬۰۰۰</strong><span>تومان</span></div><span class="ticket-before">پیش از ثبت سفارش</span></div>
+              <div class="film-confirmation"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><path d="m14 24 7 7 14-15"/></svg></div>
+              <span class="film-sticker amount-sticker">کالا و ارسال، یکجا</span>
+            </div>
+          </div>
+          <div class="film-timeline" aria-hidden="true"><div class="film-track"><span id="film-progress"></span></div><span class="timeline-label" data-cue="1">نیاز شما</span><span class="timeline-label" data-cue="2">بسته‌های کالا</span><span class="timeline-label" data-cue="3">مبلغ روشن</span></div>
+          <div class="story-actions">
+            <button class="play-button" id="play-demo" aria-label="توقف موشن‌گرافی"><svg id="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg><span>توقف نمایش</span></button>
+            <span class="interaction-hint">تعداد را تغییر دهید؛ روایت هم تغییر می‌کند.</span>
+          </div>
+          <p class="sample-note">کالاها و مبلغ‌ها برای نمایش نمونه‌اند.</p>
+        </div>
+        <div class="receipt-scene">
+          <span class="scene-caption">از نیاز شما تا یک مبلغ روشن</span>
+          <article class="receipt" aria-labelledby="receipt-title">
+            <div class="receipt-heading"><h2 id="receipt-title">خرید مجموعه شما</h2><span class="receipt-chip">نمونه</span></div>
+            <div class="selected-product"><div class="selected-image"><img id="receipt-image" src="assets/pens.svg" alt="" width="95" height="70"></div><div><h3 id="product-name">بسته خودکار آبی</h3><p id="product-pack">۱۲ خودکار در هر بسته</p></div><label class="receipt-product-label"><span class="sr-only">انتخاب کالای نمونه</span><select id="product-select"><option value="pens">خودکار</option><option value="cleaning">مایع دستشویی</option><option value="cups">لیوان</option></select></label></div>
+            <div class="formula-row">
+              <div class="unit-price"><span class="field-label">قیمت هر بسته</span><strong id="unit-price">۱۸۵٬۰۰۰</strong><small>تومان</small></div>
+              <span class="multiply" aria-hidden="true">×</span>
+              <div class="quantity-field"><span class="field-label">تعداد بسته‌ها</span><div class="quantity-control"><button id="decrease" aria-label="کم کردن تعداد بسته‌ها">−</button><output id="quantity" aria-label="تعداد بسته‌ها">۳</output><button id="increase" aria-label="زیاد کردن تعداد بسته‌ها">+</button></div></div>
+            </div>
+            <div class="units-summary"><div><span class="units-label">تعداد کل اقلام</span><p id="units-breakdown">۳ بسته × ۱۲ عدد در هر بسته</p></div><strong><output id="total-units">۳۶</output><span id="unit-name">خودکار</span></strong></div>
+            <div class="subtotal-line"><span>مبلغ کالاها</span><span><b id="subtotal">۵۵۵٬۰۰۰</b><small> تومان</small></span></div>
+            <div class="shipping-line"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h11v12H3ZM14 9h4l3 4v4h-7M7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></svg>هزینه ارسال</span><span><b id="shipping">۶۰٬۰۰۰</b><small> تومان</small></span></div>
+            <div class="total-block" aria-label="مبلغ نهایی نمونه"><div><span class="total-label">مبلغ نهایی سفارش</span><strong><output id="total">۶۱۵٬۰۰۰</output><small>تومان</small></strong></div><span class="total-check"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg></span></div>
+            <p class="receipt-footnote">کالاها + ارسال؛ پیش از ثبت سفارش</p>
+          </article>
+          <div class="receipt-tail" aria-hidden="true"></div>
+          <span class="scene-label"><span aria-hidden="true">✓</span>کالا و ارسال، یکجا</span>
+          <p class="sr-only" id="calculation-announcement" aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </div>
+    </section>
+    <noscript><p class="no-script">برای تغییر کالا و تعداد، جاوااسکریپت مرورگر را فعال کنید. مبلغ‌های بالا نمونه‌اند.</p></noscript>
+  </main>
+</body>
+</html>
