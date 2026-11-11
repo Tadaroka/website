@@ -9,10 +9,7 @@ const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const section = document.querySelector('.purchase-demo');
 const film = document.querySelector('.motion-film');
 const totalOutput = document.getElementById('total');
-const picker = document.getElementById('product-picker');
-const productTrigger = document.getElementById('product-trigger');
-const productMenu = document.getElementById('product-menu');
-const productOptions = [...productMenu.querySelectorAll('[data-product]')];
+const productChoices = [...document.querySelectorAll('[data-product]')];
 const progress = document.getElementById('film-progress');
 const decrease = document.getElementById('decrease');
 const increase = document.getElementById('increase');
@@ -57,7 +54,6 @@ function render() {
   const total = subtotal + shipping;
   document.getElementById('product-name').textContent = product.name;
   document.getElementById('product-pack').textContent = product.pack;
-  document.getElementById('receipt-image').src = selected === 'pens' ? 'assets/pens.svg' : `../../assets/${product.image}`;
   document.getElementById('unit-price').textContent = format.format(product.price);
   document.getElementById('quantity').textContent = format.format(quantity);
   document.getElementById('total-units').textContent = format.format(units);
@@ -75,13 +71,13 @@ function render() {
   film.querySelector('.film-units').textContent = `${format.format(units)} ${product.unit}`;
   film.querySelector('.film-subtotal').textContent = format.format(subtotal);
   film.querySelector('.film-shipping').textContent = format.format(shipping);
-  film.querySelector('.film-total').textContent = format.format(total);
+  film.querySelectorAll('.film-total').forEach(output => { output.textContent = format.format(total); });
   film.querySelector('.tile-back').hidden = quantity < 3;
   film.querySelector('.tile-middle').hidden = quantity < 2;
   const announcement = `${format.format(quantity)} بسته ${product.label}، شامل ${format.format(units)} ${product.unit}؛ مبلغ نهایی نمونه ${format.format(total)} تومان، شامل ارسال.`;
   film.setAttribute('aria-label', `موشن‌گرافی خرید: ${announcement}`);
   document.getElementById('calculation-announcement').textContent = announcement;
-  productOptions.forEach(option => option.setAttribute('aria-selected', String(option.dataset.product === selected)));
+  productChoices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.product === selected)));
   restartAnimation(document.querySelector('.total-block'), 'is-updating');
 }
 function showScene(number) {
@@ -102,14 +98,14 @@ function tickFilm(now) {
   if (lastTime !== null) elapsed = Math.min(duration, elapsed + now - lastTime);
   lastTime = now;
   progress.style.width = `${elapsed / duration * 100}%`;
-  const next = elapsed < 1550 ? 1 : elapsed < 3150 ? 2 : 3;
+  const next = elapsed < 1300 ? 1 : elapsed < 2550 ? 2 : elapsed < 3800 ? 3 : 4;
   if (Number(film.dataset.scene) !== next) showScene(next);
   if (elapsed >= duration) stopFilm();
   else filmFrame = requestAnimationFrame(tickFilm);
 }
 function startFilm() {
   if (motion.matches) {
-    showScene(3);
+    showScene(4);
     progress.style.width = '100%';
     return;
   }
@@ -123,91 +119,41 @@ function reactToEdit() {
   stopFilm();
   render();
   if (motion.matches) {
-    showScene(3);
+    showScene(4);
     progress.style.width = '100%';
     return;
   }
   showScene(2);
-  progress.style.width = '66%';
+  progress.style.width = '35%';
   editTimer = setTimeout(() => {
     showScene(3);
-    progress.style.width = '100%';
-  }, 1800);
+    progress.style.width = '70%';
+    editTimer = setTimeout(() => {
+      showScene(4);
+      progress.style.width = '100%';
+    }, 1050);
+  }, 1050);
 }
 decrease.addEventListener('click', () => { if (quantity > 1) { quantity--; reactToEdit(); } });
 increase.addEventListener('click', () => { if (quantity < 20) { quantity++; reactToEdit(); } });
-function focusOption(index) {
-  productOptions.forEach((option, i) => { option.tabIndex = i === index ? 0 : -1; });
-  productOptions[index].focus({ preventScroll: true });
-  productOptions[index].scrollIntoView({ block: 'nearest' });
-}
-function positionPickerMenu() {
-  const rect = productTrigger.getBoundingClientRect();
-  const below = window.innerHeight - rect.bottom - 16;
-  const above = rect.top - 16;
-  const required = Math.min(productMenu.scrollHeight, 310);
-  const useAbove = below < required && above > below;
-  productMenu.dataset.placement = useAbove ? 'above' : 'below';
-  productMenu.style.maxHeight = `${Math.min(310, Math.max(96, useAbove ? above : below))}px`;
-}
-function openPicker(index = productOptions.findIndex(option => option.dataset.product === selected)) {
-  productMenu.hidden = false;
-  productTrigger.setAttribute('aria-expanded', 'true');
-  positionPickerMenu();
-  focusOption(index);
-}
-function closePicker(returnFocus = false) {
-  productMenu.hidden = true;
-  productTrigger.setAttribute('aria-expanded', 'false');
-  productOptions.forEach(option => { option.tabIndex = -1; });
-  if (returnFocus) productTrigger.focus({ preventScroll: true });
-}
-productTrigger.addEventListener('click', () => {
-  if (productMenu.hidden) openPicker();
-  else closePicker();
-});
-productTrigger.addEventListener('keydown', event => {
-  if (!['ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
-  event.preventDefault();
-  if (event.key === 'Home') openPicker(0);
-  else if (event.key === 'End') openPicker(productOptions.length - 1);
-  else openPicker();
-});
-productOptions.forEach((option, index) => {
-  option.addEventListener('click', () => {
-    const next = option.dataset.product;
-    closePicker(true);
-    if (next === selected) return;
-    selected = next;
+productChoices.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    if (selected === button.dataset.product) return;
+    selected = button.dataset.product;
     reactToEdit();
-    restartAnimation(productTrigger, 'is-changing');
   });
-  option.addEventListener('keydown', event => {
-    const offsets = { ArrowDown: 1, ArrowUp: -1 };
-    if (event.key in offsets) {
-      event.preventDefault();
-      focusOption((index + offsets[event.key] + productOptions.length) % productOptions.length);
-    } else if (event.key === 'Home' || event.key === 'End') {
-      event.preventDefault();
-      focusOption(event.key === 'Home' ? 0 : productOptions.length - 1);
-    } else if (event.key === 'Escape') {
-      event.preventDefault();
-      closePicker(true);
-    } else if (event.key === 'Tab') {
-      requestAnimationFrame(() => closePicker());
-    }
+  button.addEventListener('keydown', event => {
+    const directions = { ArrowLeft: 1, ArrowRight: -1 };
+    if (!(event.key in directions) && !['Home', 'End'].includes(event.key)) return;
+    event.preventDefault();
+    const next = event.key === 'Home' ? 0 : event.key === 'End' ? productChoices.length - 1 : (index + directions[event.key] + productChoices.length) % productChoices.length;
+    productChoices[next].focus({ preventScroll: true });
+    productChoices[next].click();
   });
 });
-document.addEventListener('pointerdown', event => {
-  if (!picker.contains(event.target)) closePicker();
-});
-picker.addEventListener('focusout', event => {
-  if (!picker.contains(event.relatedTarget)) closePicker();
-});
-window.addEventListener('resize', () => { if (!productMenu.hidden) positionPickerMenu(); });
-motion.addEventListener('change', () => { stopFilm(); render(); showScene(3); progress.style.width = '100%'; });
+motion.addEventListener('change', () => { stopFilm(); render(); showScene(4); progress.style.width = '100%'; });
 document.addEventListener('visibilitychange', () => {
-  if (document.hidden) { stopFilm(); showScene(3); progress.style.width = '100%'; }
+  if (document.hidden) { stopFilm(); showScene(4); progress.style.width = '100%'; }
 });
 render();
 showScene(1);

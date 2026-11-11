@@ -40,30 +40,51 @@
 .film-equation>div>span{font-size:11px;font-weight:400;color:var(--muted)}
 .equation-plus{flex-shrink:0}
 .ticket-total strong{unicode-bidi:isolate}
-.product-picker{position:relative;margin-bottom:25px;z-index:4}
-.product-trigger{display:flex;align-items:center;gap:12px;width:100%;min-height:92px;padding:13px 14px;text-align:start;color:var(--deep);border:1px solid #e3d8ed;background:#faf7fd;border-radius:12px;transition:background .18s,border-color .18s}
-.product-trigger:hover,.product-trigger[aria-expanded='true']{background:#f3edf8;border-color:#baa2d0}
-.selected-image{width:58px;flex-shrink:0}
-.product-copy,.option-copy{display:flex;flex-direction:column;min-width:0;gap:3px}
-.product-copy strong{font-size:15px;line-height:1.7}
-.product-copy>span,.option-copy>span{font-size:12px;line-height:1.8;color:var(--muted)}
-.picker-action{margin-inline-start:auto;display:flex;align-items:center;gap:7px;flex-shrink:0;color:var(--purple);font-size:12px;white-space:nowrap}
-.picker-action svg{width:19px;height:19px;transition:rotate .18s}
-.product-trigger[aria-expanded='true'] .picker-action svg{rotate:180deg}
-.product-menu{position:absolute;inset-inline:0;top:calc(100% + 8px);z-index:10;background:white;border:1px solid #d8c8e7;border-radius:13px;box-shadow:0 12px 28px rgb(70 41 123 / 12%);padding:7px;max-height:310px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
-.product-menu[data-placement='above']{top:auto;bottom:calc(100% + 8px)}
-.product-option{width:100%;display:flex;align-items:center;gap:10px;min-height:75px;border:1px solid transparent;border-radius:8px;padding:10px;text-align:start;background:white;color:var(--deep)}
-.product-option+.product-option{margin-top:3px}
-.product-option img{width:48px;height:46px;object-fit:contain;flex-shrink:0}
-.option-copy strong{font-size:14px;line-height:1.7}
-.product-option>svg{width:20px;height:20px;flex-shrink:0;margin-inline-start:auto;color:var(--purple);opacity:0}
-.product-option[aria-selected='true']{background:#f5effa}
-.product-option[aria-selected='true']>svg{opacity:1}
-.product-option:hover{background:#f8f4fc}
-.product-option:focus-visible{outline:2px solid var(--purple);outline-offset:-2px;background:#f5effa}
-@media(max-width:1150px) and (min-width:901px){.product-trigger{gap:8px;padding-inline:10px}.selected-image{width:43px}.picker-action>span{display:none}.product-copy strong{font-size:14px}}
-@media(max-width:480px){.product-trigger{padding:12px 10px;gap:9px;min-height:86px}.selected-image{width:46px}.product-copy strong{font-size:14px}.picker-action>span{display:none}.picker-action{padding:5px}.product-option{gap:7px;padding:8px}.product-option img{width:42px}.option-copy strong{font-size:13px}.option-copy>span{font-size:11px}.amount-sticker{min-width:193px;translate:-50% 0}.film-equation{font-size:17px}}
-@media(max-width:360px){.product-trigger{padding-inline:8px}.selected-image{width:39px}.product-copy strong{font-size:13px}.product-copy>span{font-size:11px}.picker-action{padding:2px}.film-equation{font-size:16px}.need-sheet{translate:-50% 0;rotate:-3deg}.needs-art{width:92px;left:calc(50% - 131px);top:158px}.needs-sticker{translate:-50% 0;min-width:189px;rotate:0deg}}
 /* The stamp sits at the ticket's empty corner, away from price and currency. */
 .amount-ticket{rotate:0deg}
 .film-confirmation{top:22px}
+
+/* Direct selection: all three products stay visible. */
+.product-switcher{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:12px}
+.product-choice{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:82px;padding:9px 5px 10px;border:1px solid transparent;border-radius:10px;background:#faf8fc;color:var(--muted);font-size:13px;transition:background .2s,border-color .2s,color .2s}
+.product-choice img{width:58px;height:43px;object-fit:contain}
+.product-choice:hover{background:#f2ebf8;color:var(--deep)}
+.product-choice[aria-pressed='true']{background:#f1e9f8;border-color:#b69ace;color:var(--deep);font-weight:700}
+.product-choice[aria-pressed='true']:after{content:'';position:absolute;bottom:0;width:28px;height:3px;background:var(--yellow);border-radius:3px 3px 0 0}
+.product-details{display:flex;flex-direction:column;gap:3px;margin-bottom:21px;min-height:47px}
+.product-details strong{font-size:15px;line-height:1.7}
+.product-details>span{font-size:12px;color:var(--muted)}
+.receipt-heading{margin-bottom:20px}
+.receipt-scene{padding-block:0}
+.sample-note{margin-top:20px}
+.film-timeline{gap:10px}
+.packs-sticker{padding:7px 18px}
+.amount-ticket{top:45px}
+.film-confirmation{top:35px}
+.motion-film[data-scene='4'] .finish-scene{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.finish-halo{position:absolute;width:228px;height:228px;left:50%;top:41px;translate:-50% 0;border:1px solid #d9c8e8;border-radius:50%;background:radial-gradient(circle,#f8f3fc 0,transparent 70%)}
+.finish-halo:before{content:'';position:absolute;width:10px;height:10px;top:24px;left:22px;border-radius:50%;background:var(--yellow)}
+.finish-halo:after{content:'';position:absolute;width:6px;height:6px;bottom:29px;right:15px;border-radius:50%;background:#a479bf}
+.finish-count{position:absolute;top:7px;left:50%;translate:-50% 0;font-size:15px;font-weight:700;white-space:nowrap}
+.finish-product{position:absolute;top:29px;left:50%;translate:-50% 0;width:171px;height:120px;object-fit:contain;z-index:1;rotate:-5deg}
+.finish-box{position:absolute;top:83px;left:50%;translate:-50% 0;width:245px;height:201px;z-index:2;stroke:none;overflow:visible}
+.finish-amount{position:absolute;z-index:3;top:264px;left:50%;translate:-50% 0;display:flex;align-items:baseline;justify-content:center;gap:8px;min-width:218px;padding:8px 20px;background:white;border:1px solid #dccbe8;border-radius:12px;box-shadow:0 8px 18px rgb(70 41 123 / 5%);white-space:nowrap}
+.finish-amount strong{font-size:27px;line-height:1.5;font-variant-numeric:tabular-nums;unicode-bidi:isolate}
+.finish-amount>span{font-size:12px;color:var(--muted)}
+@media(prefers-reduced-motion:no-preference){
+ .motion-film[data-scene='2'] .tile-back{animation-duration:.6s}
+ .motion-film[data-scene='2'] .tile-middle{animation-duration:.6s;animation-delay:.1s}
+ .motion-film[data-scene='2'] .tile-front{animation-duration:.6s;animation-delay:.2s}
+ .motion-film[data-scene='2'] .packs-sticker{animation-duration:.35s;animation-delay:.5s}
+ .motion-film[data-scene='4'] .finish-halo{animation:finish-halo .6s both}
+ .motion-film[data-scene='4'] .finish-box{animation:finish-box .65s both}
+ .motion-film[data-scene='4'] .finish-product{animation:finish-product .7s .1s both}
+ .motion-film[data-scene='4'] .finish-amount{animation:finish-price .45s .3s both}
+ .motion-film[data-scene='4'] .finish-count{animation:finish-price .35s .15s both}
+}
+@keyframes finish-halo{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+@keyframes finish-box{from{opacity:0;transform:translateY(35px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes finish-product{0%{opacity:0;transform:translateY(-27px) rotate(10deg)}70%{opacity:1;transform:translateY(4px) rotate(-2deg)}100%{opacity:1;transform:translateY(0) rotate(0)}}
+@keyframes finish-price{from{opacity:0;transform:translateY(10px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:480px){.product-switcher{gap:6px}.product-choice{min-height:76px;font-size:12px;padding-inline:3px}.product-choice img{width:50px;height:38px}.product-details strong{font-size:14px}.finish-box{width:230px;height:189px;top:80px}.finish-product{width:160px;height:114px;top:28px}.finish-halo{width:216px;height:216px}.finish-amount{top:253px;min-width:202px;padding-inline:16px}.finish-amount strong{font-size:25px}.finish-count{font-size:14px}.film-equation{font-size:17px}}
+@media(max-width:360px){.product-choice img{width:44px;height:35px}.product-details strong{font-size:13px}.need-sheet{translate:-50% 0;rotate:-3deg}.needs-art{width:92px;left:calc(50% - 131px);top:158px}.film-equation{font-size:16px}.finish-amount{min-width:194px}.finish-amount strong{font-size:24px}.timeline-label{font-size:12px}}
