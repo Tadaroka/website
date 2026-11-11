@@ -5,7 +5,7 @@
   <meta name="theme-color" content="#46297b">
   <title>تدارکا | نمونه تعاملی خرید</title>
   <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="demo.css?v=5"><script src="demo.js?v=5" defer></script>
+  <link rel="stylesheet" href="../../assets/purchase-motion.css?v=6"><link rel="stylesheet" href="preview.css?v=6"><script src="../../assets/purchase-motion.js?v=6" defer></script>
 </head>
 <body>
   <header class="demo-header">
@@ -14,22 +14,22 @@
     <a class="back-link" href="../../index.html#buying">برگشت به سایت</a>
   </header>
   <main>
-    <section class="purchase-demo" aria-labelledby="demo-title" data-step="1">
+    <section class="purchase-demo purchase-motion" data-purchase-motion aria-labelledby="demo-title" data-step="1">
       <div class="demo-layout">
         <div class="story">
           <span class="eyebrow"><span class="tiny-square" aria-hidden="true"></span>خرید با قیمت مشخص</span>
-          <h1 id="demo-title">نیازتان را بچینید،<br><span class="headline-mark">مبلغ را روشن ببینید.</span></h1>
+          <h1 id="demo-title" class="purchase-title">نیازتان را بچینید،<br><span class="headline-mark">مبلغ را روشن ببینید.</span></h1>
           <p class="lead">قیمت کالا و ارسال، پیش از ثبت سفارش.</p>
           <div class="motion-film" data-scene="1" role="img" aria-label="موشن‌گرافی: نیاز مجموعه به بسته‌های کالا تبدیل می‌شود و مبلغ نهایی با هزینهٔ ارسال مشخص می‌شود.">
             <div class="film-orbit" aria-hidden="true"></div>
             <div class="film-scene needs-scene" aria-hidden="true">
               <div class="need-sheet"><div class="sheet-head"><span>نیاز مجموعه شما</span><span class="sheet-mark"></span></div><div class="need-row"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg><strong class="film-product-name">خودکار آبی</strong></div><div class="need-row quantity-row"><span class="list-dot"></span><strong class="film-quantity">۳ بسته</strong></div><div class="need-row secondary-row"><span class="list-dot"></span><span class="film-pack">۱۲ خودکار در هر بسته</span></div></div>
-              <img class="needs-art film-art" src="assets/pens.svg" alt="" width="240" height="160">
+              <img class="needs-art film-art" src="../../assets/pens.svg" alt="" width="240" height="160">
             </div>
             <div class="film-scene packs-scene" aria-hidden="true">
-              <div class="pack-tile tile-back"><img class="film-art" src="assets/pens.svg" alt="" width="240" height="160"></div>
-              <div class="pack-tile tile-middle"><img class="film-art" src="assets/pens.svg" alt="" width="240" height="160"></div>
-              <div class="pack-tile tile-front"><img class="film-art" src="assets/pens.svg" alt="" width="240" height="160"><span class="film-quantity">۳ بسته</span></div>
+              <div class="pack-tile tile-back"><img class="film-art" src="../../assets/pens.svg" alt="" width="240" height="160"></div>
+              <div class="pack-tile tile-middle"><img class="film-art" src="../../assets/pens.svg" alt="" width="240" height="160"></div>
+              <div class="pack-tile tile-front"><img class="film-art" src="../../assets/pens.svg" alt="" width="240" height="160"><span class="film-quantity">۳ بسته</span></div>
               <span class="film-sticker packs-sticker"><b class="film-units">۳۶ خودکار</b></span>
             </div>
             <div class="film-scene amount-scene" aria-hidden="true">
@@ -39,7 +39,7 @@
             <div class="film-scene finish-scene" aria-hidden="true">
               <span class="finish-count film-quantity">۳ بسته</span>
               <div class="finish-halo"></div>
-              <img class="finish-product film-art" src="assets/pens.svg" alt="" width="240" height="160">
+              <img class="finish-product film-art" src="../../assets/pens.svg" alt="" width="240" height="160">
               <svg class="finish-box" viewBox="0 0 280 230" aria-hidden="true">
                 <ellipse cx="140" cy="212" rx="108" ry="10" fill="#46297b" opacity=".08"/>
                 <path d="m32 90 108-52 108 52-108 52Z" fill="#b48bcc"/>
@@ -59,17 +59,17 @@
         </div>
         <div class="receipt-scene">
           <article class="receipt" aria-labelledby="receipt-title">
-            <div class="receipt-heading"><h2 id="receipt-title">خرید مجموعه شما</h2><span class="receipt-chip">نمونه</span></div>
+            <div class="receipt-heading"><h2 id="receipt-title" class="receipt-title">خرید مجموعه شما</h2><span class="receipt-chip">نمونه</span></div>
             <div class="product-switcher" role="group" aria-label="انتخاب کالا">
-              <button class="product-choice" data-product="pens" aria-pressed="true"><img src="assets/pens.svg" alt="" width="58" height="43"><span>خودکار</span></button>
-              <button class="product-choice" data-product="cleaning" aria-pressed="false"><img src="../../assets/cleaning.svg" alt="" width="58" height="43"><span>شوینده</span></button>
-              <button class="product-choice" data-product="cups" aria-pressed="false"><img src="../../assets/disposable.svg" alt="" width="58" height="43"><span>لیوان</span></button>
+              <button class="product-choice" disabled data-product="pens" aria-pressed="true"><img src="../../assets/pens.svg" alt="" width="58" height="43"><span>خودکار</span></button>
+              <button class="product-choice" disabled data-product="cleaning" aria-pressed="false"><img src="../../assets/cleaning.svg" alt="" width="58" height="43"><span>شوینده</span></button>
+              <button class="product-choice" disabled data-product="cups" aria-pressed="false"><img src="../../assets/disposable.svg" alt="" width="58" height="43"><span>لیوان</span></button>
             </div>
             <div class="product-details"><strong id="product-name">بستهٔ خودکار آبی</strong><span id="product-pack">۱۲ خودکار در هر بسته</span></div>
             <div class="formula-row">
               <div class="unit-price"><span class="field-label">قیمت هر بسته</span><strong id="unit-price">۱۸۵٬۰۰۰</strong><small>تومان</small></div>
               <span class="multiply" aria-hidden="true">×</span>
-              <div class="quantity-field"><span class="field-label">تعداد بسته‌ها</span><div class="quantity-control"><button id="decrease" aria-label="کم کردن تعداد بسته‌ها">−</button><output id="quantity" aria-label="تعداد بسته‌ها">۳</output><button id="increase" aria-label="زیاد کردن تعداد بسته‌ها">+</button></div></div>
+              <div class="quantity-field"><span class="field-label">تعداد بسته‌ها</span><div class="quantity-control"><button id="decrease" disabled aria-label="کم کردن تعداد بسته‌ها">−</button><output id="quantity" aria-label="تعداد بسته‌ها">۳</output><button id="increase" disabled aria-label="زیاد کردن تعداد بسته‌ها">+</button></div></div>
             </div>
             <div class="units-summary"><div><span class="units-label">تعداد کل اقلام</span><p id="units-breakdown">۳ بسته × ۱۲ عدد در هر بسته</p></div><strong><output id="total-units">۳۶</output><span id="unit-name">خودکار</span></strong></div>
             <div class="subtotal-line"><span>مبلغ کالاها</span><span><b id="subtotal">۵۵۵٬۰۰۰</b><small> تومان</small></span></div>
